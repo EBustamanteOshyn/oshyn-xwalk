@@ -1,8 +1,9 @@
 {
   "mappings": [
-    "/content/aem-boilerplate/:/"
+    "/content/oshyn-xwalk/:/",
+    "/content/oshyn-xwalk/configuration:/.helix/config.json"
   ],
   "includes": [
-    "/content/aem-boilerplate/"
+    "/content/oshyn-xwalk/"
   ]
 }
