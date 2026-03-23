@@ -1,4 +1,6 @@
 export default function decorate(block) {
   /* change to ul, li */
-  console.log("decorate platform card");
+  console.log('decorate platform card');
+
+  const children = [...block.children];
 }
