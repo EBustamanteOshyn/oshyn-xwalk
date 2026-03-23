@@ -16,13 +16,8 @@
       "cards",
       "columns",
       "fragment",
+      "platformcards",
       "card-collection"
-    ]
-  },
-  {
-    "id": "card-collection",
-    "components": [
-      "card"
     ]
   },
   {
@@ -44,6 +39,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "platform-cards",
+    "components": [
+      "card"
     ]
   }
 ]
