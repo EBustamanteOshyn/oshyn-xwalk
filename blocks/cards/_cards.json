@@ -48,6 +48,13 @@
           "value": "",
           "label": "Text",
           "valueType": "string"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "cta",
+          "label": "CTA Link",
+          "multi": false
         }
       ]
     }
