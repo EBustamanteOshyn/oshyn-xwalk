@@ -1,124 +1,151 @@
+function getRows(block) {
+  return [...block.children].filter((row) => row.tagName === 'DIV');
+}
+
+function createCta(row) {
+  if (!row) return null;
+
+  const existingLink = row.querySelector('a[href]');
+  if (existingLink) {
+    const link = existingLink.cloneNode(true);
+    link.classList.add('button', 'primary', 'card-collection-cta');
+    return link;
+  }
+
+  const cells = [...row.children].filter((cell) => cell.tagName === 'DIV');
+  const text = cells[0]?.textContent?.trim();
+  const url = cells[1]?.textContent?.trim();
+
+  if (!text || !url) return null;
+
+  const link = document.createElement('a');
+  link.href = url;
+  link.textContent = text;
+  link.className = 'button primary card-collection-cta';
+  return link;
+}
+
+function createCard(row) {
+  const card = document.createElement('article');
+  card.className = 'card-collection-card';
+
+  const cells = [...row.children].filter((cell) => cell.tagName === 'DIV');
+
+  const imageCell = cells[0] || row;
+  const titleCell = cells[1] || row;
+  const bodyCell = cells[2] || row;
+  const linkLabelCell = cells[3];
+  const linkUrlCell = cells[4];
+
+  const media = imageCell.querySelector('picture, img');
+  if (media) {
+    const figure = document.createElement('figure');
+    figure.className = 'card-collection-card-image';
+    figure.appendChild(media.cloneNode(true));
+    card.appendChild(figure);
+  }
+
+  const body = document.createElement('div');
+  body.className = 'card-collection-card-body';
+
+  const heading = titleCell.querySelector('h3, h4, h5, h6, strong') || (
+    titleCell.textContent.trim() ? null : null
+  );
+
+  if (heading) {
+    const headingClone = heading.cloneNode(true);
+    headingClone.classList.add('card-collection-card-title');
+    body.appendChild(headingClone);
+  } else if (titleCell !== row && titleCell.textContent.trim()) {
+    const title = document.createElement('h3');
+    title.className = 'card-collection-card-title';
+    title.textContent = titleCell.textContent.trim();
+    body.appendChild(title);
+  }
+
+  const paragraph = bodyCell.querySelector('p');
+  if (paragraph) {
+    const paragraphClone = paragraph.cloneNode(true);
+    paragraphClone.classList.add('card-collection-card-text');
+    body.appendChild(paragraphClone);
+  } else if (bodyCell !== row && bodyCell.textContent.trim()) {
+    const text = document.createElement('p');
+    text.className = 'card-collection-card-text';
+    text.textContent = bodyCell.textContent.trim();
+    body.appendChild(text);
+  }
+
+  let link;
+  const existingLink = row.querySelector('a[href]');
+  if (existingLink) {
+    link = existingLink.cloneNode(true);
+  } else if (linkLabelCell?.textContent.trim() && linkUrlCell?.textContent.trim()) {
+    link = document.createElement('a');
+    link.href = linkUrlCell.textContent.trim();
+    link.textContent = linkLabelCell.textContent.trim();
+  }
+
+  if (link) {
+    link.classList.add('button', 'secondary', 'card-collection-card-link');
+    body.appendChild(link);
+  }
+
+  if (body.children.length) {
+    card.appendChild(body);
+  }
+
+  return card;
+}
+
 export default function decorate(block) {
   block.classList.add('card-collection');
 
-  // header parts (first matching elements are used)
-  const headline = block.querySelector('h1, h2, h3, h4, h5, h6');
-  const description = block.querySelector('p');
-  const cta = block.querySelector('a[href]');
+  const rows = getRows(block);
 
-  // find a cards container produced by the card primitive block if available.
-  let cardsSource = block.querySelector('.cards');
-
-  // Build card items from leftover rows if no dedicated cards div exists
-  if (!cardsSource) {
-    const rows = [...block.children].filter((row) => row.tagName === 'DIV');
-    let cardRows = rows;
-    if (headline || description || cta) {
-      cardRows = rows.filter((row) => {
-        const wouldContainHeadline = headline && row.contains(headline);
-        const wouldContainDescription = description && row.contains(description);
-        const wouldContainCta = cta && row.contains(cta);
-        return !wouldContainHeadline && !wouldContainDescription && !wouldContainCta;
-      });
-    }
-
-    const cardElements = cardRows.slice(0, 3).map((row) => {
-      const card = document.createElement('article');
-      card.className = 'card-collection-card';
-
-      const media = row.querySelector('picture, img');
-      if (media) {
-        const figure = document.createElement('figure');
-        figure.className = 'card-collection-card-image';
-        figure.appendChild(media.cloneNode(true));
-        card.appendChild(figure);
-      }
-
-      const body = document.createElement('div');
-      body.className = 'card-collection-card-body';
-
-      const cardHeading = row.querySelector('h3, h4, h5, h6, strong')?.cloneNode(true);
-      if (cardHeading) {
-        cardHeading.classList.add('card-collection-card-title');
-        body.appendChild(cardHeading);
-      }
-
-      const cardText = row.querySelector('p')?.cloneNode(true);
-      if (cardText) {
-        cardText.classList.add('card-collection-card-text');
-        body.appendChild(cardText);
-      }
-
-      const cardLink = row.querySelector('a[href]')?.cloneNode(true);
-      if (cardLink) {
-        cardLink.classList.add('button', 'secondary', 'card-collection-card-link');
-        body.appendChild(cardLink);
-      }
-
-      // If row contains simple text cell without heading/card, preserve it as body text.
-      if (!cardHeading && !cardText && !cardLink && row.textContent.trim()) {
-        const fallbackText = document.createElement('p');
-        fallbackText.className = 'card-collection-card-text';
-        fallbackText.textContent = row.textContent.trim();
-        body.appendChild(fallbackText);
-      }
-
-      if (body.children.length) card.appendChild(body);
-      return card;
-    });
-
-    cardsSource = document.createElement('div');
-    cardsSource.className = 'card-collection-cards';
-    cardElements.forEach((card) => cardsSource.appendChild(card));
-  } else {
-    // existing .cards container from card primitive: use only first 3 card items
-    const cardItems = [...cardsSource.querySelectorAll('li')].slice(0, 3);
-    cardsSource = document.createElement('div');
-    cardsSource.className = 'card-collection-cards';
-    cardItems.forEach((item) => {
-      const card = document.createElement('article');
-      card.className = 'card-collection-card';
-      card.appendChild(item.cloneNode(true));
-      cardsSource.appendChild(card);
-    });
-  }
+  const headlineRow = rows[0];
+  const descriptionRow = rows[1];
+  const ctaRow = rows[2];
+  const cardRows = rows.slice(3);
 
   const header = document.createElement('header');
   header.className = 'card-collection-header';
 
-  const headingId = `card-collection-heading-${Math.random().toString(36).slice(2, 8)}`;
-
-  if (headline) {
-    const headingClone = headline.cloneNode(true);
+  const heading = headlineRow?.querySelector('h1, h2, h3, h4, h5, h6');
+  if (heading) {
+    const headingClone = heading.cloneNode(true);
     headingClone.classList.add('card-collection-title');
-    headingClone.id = headingId;
     header.appendChild(headingClone);
-  } else {
-    const fallbackHeading = document.createElement('h2');
-    fallbackHeading.className = 'card-collection-title';
-    fallbackHeading.id = headingId;
-    fallbackHeading.textContent = 'Featured cards';
-    header.appendChild(fallbackHeading);
+  } else if (headlineRow?.textContent.trim()) {
+    const title = document.createElement('h2');
+    title.className = 'card-collection-title';
+    title.textContent = headlineRow.textContent.trim();
+    header.appendChild(title);
   }
 
+  const description = descriptionRow?.querySelector('p');
   if (description) {
     const descriptionClone = description.cloneNode(true);
     descriptionClone.classList.add('card-collection-description');
     header.appendChild(descriptionClone);
+  } else if (descriptionRow?.textContent.trim()) {
+    const text = document.createElement('p');
+    text.className = 'card-collection-description';
+    text.textContent = descriptionRow.textContent.trim();
+    header.appendChild(text);
   }
 
+  const cta = createCta(ctaRow);
   if (cta) {
-    const ctaClone = cta.cloneNode(true);
-    ctaClone.classList.add('button', 'primary', 'card-collection-cta');
-    ctaClone.setAttribute('aria-label', ctaClone.textContent.trim() || 'Learn more');
-    header.appendChild(ctaClone);
+    header.appendChild(cta);
   }
 
-  const collection = document.createElement('section');
-  collection.className = 'card-collection-grid';
-  collection.setAttribute('role', 'region');
-  collection.setAttribute('aria-labelledby', headingId);
-  collection.appendChild(cardsSource);
+  const cardsWrapper = document.createElement('div');
+  cardsWrapper.className = 'card-collection-cards';
 
-  block.replaceChildren(header, collection);
+  cardRows.forEach((row) => {
+    const card = createCard(row);
+    if (card) cardsWrapper.appendChild(card);
+  });
+
+  block.replaceChildren(header, cardsWrapper);
 }
