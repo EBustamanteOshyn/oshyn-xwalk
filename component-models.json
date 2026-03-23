@@ -214,7 +214,7 @@
         "valueType": "string"
       },
       {
-        "component": "reference",
+        "component": "aem-content",
         "valueType": "string",
         "name": "cta",
         "label": "CTA Link",
@@ -274,6 +274,32 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta",
+        "label": "CTA Link",
+        "multi": false
       }
     ]
   }
