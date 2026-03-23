@@ -157,7 +157,7 @@
         "valueType": "string"
       },
       {
-        "component": "group",
+        "component": "container",
         "name": "cta",
         "label": "Primary CTA",
         "fields": [
@@ -174,44 +174,32 @@
             "valueType": "string"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
       },
       {
-        "component": "group",
-        "name": "cards",
-        "label": "Cards",
-        "multi": true,
-        "fields": [
-          {
-            "component": "reference",
-            "name": "image",
-            "label": "Card Image",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "name": "title",
-            "label": "Card Title",
-            "valueType": "string"
-          },
-          {
-            "component": "richtext",
-            "name": "body",
-            "label": "Card Text",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "name": "linkLabel",
-            "label": "Card Link Text",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "name": "link",
-            "label": "Card Link URL",
-            "valueType": "string"
-          }
-        ]
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta",
+        "label": "CTA Link",
+        "multi": false
       }
     ]
   },
