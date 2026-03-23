@@ -16,7 +16,14 @@
       "cards",
       "columns",
       "fragment",
-      "platformcards"
+      "platformcards",
+      "card-collection"
+    ]
+  },
+  {
+    "id": "card-collection",
+    "components": [
+      "card"
     ]
   },
   {

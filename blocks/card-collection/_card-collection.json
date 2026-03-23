@@ -73,5 +73,12 @@
       ]
     }
   ],
-  "filters": []
+  "filters": [
+    {
+      "id":"card-collection",
+      "components": [
+        "card"
+      ] 
+    }
+  ]
 }
