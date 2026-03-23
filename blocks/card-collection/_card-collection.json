@@ -33,9 +33,15 @@
           "valueType": "string"
         },
         {
-          "component": "reference",
-          "name": "ctaLink",
-          "label": "Primary CTA Link",
+          "component": "text",
+          "name": "ctaUrl",
+          "label": "Primary CTA URL",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "ctaText",
+          "label": "Primary CTA Text",
           "valueType": "string"
         },
         {
@@ -63,9 +69,9 @@
               "valueType": "string"
             },
             {
-              "component": "reference",
-              "name": "link",
-              "label": "Card Link",
+              "component": "text",
+              "name": "linkUrl",
+              "label": "Card Link URL",
               "valueType": "string"
             }
           ]
@@ -73,12 +79,5 @@
       ]
     }
   ],
-  "filters": [
-    {
-      "id":"card-collection",
-      "components": [
-        "card"
-      ] 
-    }
-  ]
+  "filters": []
 }
