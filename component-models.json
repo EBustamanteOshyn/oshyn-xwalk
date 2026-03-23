@@ -142,6 +142,61 @@
     ]
   },
   {
+    "id": "card-collection",
+    "fields": [
+      {
+        "component": "text",
+        "name": "headline",
+        "label": "Headline",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "ctaLink",
+        "label": "Primary CTA Link",
+        "valueType": "string"
+      },
+      {
+        "component": "group",
+        "name": "cards",
+        "label": "Cards",
+        "multi": true,
+        "fields": [
+          {
+            "component": "reference",
+            "name": "image",
+            "label": "Card Image",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "title",
+            "label": "Card Title",
+            "valueType": "string"
+          },
+          {
+            "component": "richtext",
+            "name": "body",
+            "label": "Card Text",
+            "valueType": "string"
+          },
+          {
+            "component": "reference",
+            "name": "link",
+            "label": "Card Link",
+            "valueType": "string"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -157,6 +212,13 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "cta",
+        "label": "CTA Link",
+        "multi": false
       }
     ]
   },
