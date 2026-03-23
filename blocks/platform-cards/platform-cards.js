@@ -3,4 +3,5 @@ export default function decorate(block) {
   console.log('decorate platform card');
 
   const children = [...block.children];
+  console.log(children);
 }
