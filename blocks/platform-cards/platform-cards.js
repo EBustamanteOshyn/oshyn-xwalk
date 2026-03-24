@@ -13,7 +13,7 @@ export default function decorate(block) {
       while (bodyCol.firstElementChild) imageCol.append(bodyCol.firstElementChild);
     }
     bodyCol.remove();
-    imageCol.querySelector('p')?.classList.add('tw-card-text');    
+    imageCol.querySelector('p')?.classList.add('tw-card-text');
     if (ctaCol && ctaCol.children.length === 1 && ctaCol.querySelector('a')) {
       const ctaLink = ctaCol.querySelector('a');
       if (ctaLink.href) a.href = ctaLink.href;
@@ -28,6 +28,6 @@ export default function decorate(block) {
       moveInstrumentation(img, optimizedPic.querySelector('img'));
       optimizedPic.querySelector('img').classList.add('tw-card-image');
       img.closest('picture').replaceWith(optimizedPic);
-    });    
+    });
   });
 }
