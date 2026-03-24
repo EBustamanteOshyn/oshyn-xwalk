@@ -1,0 +1,106 @@
+.tw-card-container {
+    display: grid;
+    gap: 1.5rem;
+    justify-content: center;
+    overflow: visible;
+    padding-bottom: 6rem;
+    padding-top: 2rem;
+    pointer-events: none;
+}
+
+.tw-card-container>* {
+    pointer-events: auto;
+}
+
+.tw-card {
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+    --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -2px rgba(0, 0, 0, .1);
+    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+    background-color: rgb(255 255 255/var(--tw-bg-opacity, 1));
+    border-radius: .5rem;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    color: rgb(0 0 0/var(--tw-text-opacity, 1)) !important;
+    display: flex;
+    flex-direction: column;
+    height: 420px;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 356px;
+    padding: 1.5rem;
+    text-decoration-line: none !important;
+}
+
+.tw-card-link {
+    --tw-text-opacity: 1;
+    align-self: flex-start;
+    color: rgb(0 0 0/var(--tw-text-opacity, 1));
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-decoration-line: underline;
+    text-underline-offset: 8px;
+}
+
+.tw-card-text {
+    font-size: 18px;
+    line-height: 27px;
+    line-height: 1.75rem;
+    font-family: Hind, sans-serif;
+}
+
+.tw-card-image {
+    height: 132px;
+    width: auto;
+}
+
+.tw-card-active .tw-card-link,
+.tw-card-container:hover>:hover .tw-card-link {
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, #014ffd, #3364dd 26%, #7041c3 55%, #a94deb 79%, #fe80fe);
+    border-image-source: linear-gradient(90deg, #3364dd, #4459d5 19.79%, #6447c8 45%, #7041c3 55%, #a94deb 79%, #fe80fe);
+    border-style: solid;
+    border-width: 2px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    font-weight: 600;
+    position: relative;
+    text-decoration: none;
+    transition: all .3s ease-out
+}
+
+@media (min-width: 768px) {
+
+    .tw-card-container {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .tw-card {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .tw-card-image {
+        height: 4rem;
+    }
+
+    .tw-card {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .tw-card-container:hover .tw-card {
+        transform: scale(0.95);
+    }
+
+    .tw-card-container:hover .tw-card:hover {
+        transform: scale(1.05);
+    }
+}
+
+@media (min-width: 1024px) {
+    .tw-card-image {
+        height: 132px;
+    }
+}
