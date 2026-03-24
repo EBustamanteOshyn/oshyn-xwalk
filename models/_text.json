@@ -27,8 +27,8 @@
           "valueType": "string"
         },
         {
-          "component": "multiselect",
-          "name": "style",
+          "component": "select",
+          "name": "classes",
           "label": "Style",
           "options": [
             {
