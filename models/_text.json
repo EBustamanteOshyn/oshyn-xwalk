@@ -8,8 +8,7 @@
           "page": {
             "resourceType": "core/franklin/components/text/v1/text",
             "template": {
-              "model": "text",
-              "name": "text"
+              "model": "text"
             }
           }
         }
@@ -24,20 +23,14 @@
           "component": "richtext",
           "name": "text",
           "value": "",
-          "label": "Text",
+          "label": "Text test",
           "valueType": "string"
         },
         {
-          "component": "select",
-          "name": "classes",
-          "value": "",
+          "component": "multiselect",
+          "name": "style",
           "label": "Style",
-          "valueType": "string",
           "options": [
-            {
-              "name": "Default (no-style)",
-              "value": ""
-            },
             {
               "name": "Promo",
               "value": "promo"
