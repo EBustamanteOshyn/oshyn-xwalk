@@ -152,8 +152,8 @@
         "description": "The label shown for this section in the Content Tree"
       },
       {
-        "component": "multiselect",
-        "name": "style",
+        "component": "select",
+        "name": "classes",
         "label": "Style",
         "options": [
           {
