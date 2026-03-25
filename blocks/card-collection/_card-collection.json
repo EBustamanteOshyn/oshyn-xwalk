@@ -9,7 +9,23 @@
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
               "name": "Card Collection",
-              "model": "card-collection"
+              "model": "card-collection",
+              "filter": "cards"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Card",
+      "id": "card",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Card",
+              "model": "card"
             }
           }
         }
@@ -33,64 +49,47 @@
           "valueType": "string"
         },
         {
-          "component": "group",
+          "component": "aem-content",
           "name": "cta",
-          "label": "Primary CTA",
-          "fields": [
-            {
-              "component": "text",
-              "name": "text",
-              "label": "CTA Text",
-              "valueType": "string"
-            },
-            {
-              "component": "text",
-              "name": "url",
-              "label": "CTA URL",
-              "valueType": "string"
-            }
-          ]
+          "label": "CTA Link",
+          "valueType": "string"
         },
         {
-          "component": "group",
-          "name": "cards",
-          "label": "Cards",
-          "multi": true,
-          "fields": [
-            {
-              "component": "reference",
-              "name": "image",
-              "label": "Card Image",
-              "valueType": "string"
-            },
-            {
-              "component": "text",
-              "name": "title",
-              "label": "Card Title",
-              "valueType": "string"
-            },
-            {
-              "component": "richtext",
-              "name": "body",
-              "label": "Card Text",
-              "valueType": "string"
-            },
-            {
-              "component": "text",
-              "name": "linkLabel",
-              "label": "Card Link Text",
-              "valueType": "string"
-            },
-            {
-              "component": "text",
-              "name": "link",
-              "label": "Card Link URL",
-              "valueType": "string"
-            }
-          ]
+          "component": "text",
+          "name": "ctaText",
+          "label": "CTA Text",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "card",
+      "fields": [
+        {
+          "component": "reference",
+          "name": "image",
+          "label": "Image",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "label": "Text",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "name": "cta",
+          "label": "CTA Link",
+          "valueType": "string"
         }
       ]
     }
   ],
-  "filters": []
+  "filters": [
+    {
+      "id": "cards",
+      "components": ["card"]
+    }
+  ]
 }
