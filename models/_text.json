@@ -20,15 +20,8 @@
       "id": "text",
       "fields": [
         {
-          "component": "richtext",
-          "name": "text",
-          "value": "",
-          "label": "Text test",
-          "valueType": "string"
-        },
-        {
-          "component": "select",
-          "name": "classes",
+          "component": "multiselect",
+          "name": "style",
           "label": "Style",
           "options": [
             {
