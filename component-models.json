@@ -81,29 +81,6 @@
     ]
   },
   {
-    "id": "text",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text test",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "name": "classes",
-        "label": "Style",
-        "options": [
-          {
-            "name": "Promo",
-            "value": "promo"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "button",
     "fields": [
       {
@@ -159,6 +136,10 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
           }
         ]
       }
