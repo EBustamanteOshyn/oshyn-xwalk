@@ -49,23 +49,16 @@
           "valueType": "string"
         },
         {
-          "component": "container",
+          "component": "aem-content",
           "name": "cta",
-          "label": "Primary CTA",
-          "fields": [
-            {
-              "component": "text",
-              "name": "text",
-              "label": "CTA Text",
-              "valueType": "string"
-            },
-            {
-              "component": "text",
-              "name": "url",
-              "label": "CTA URL",
-              "valueType": "string"
-            }
-          ]
+          "label": "CTA Link",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "ctaText",
+          "label": "CTA Text",
+          "valueType": "string"
         }
       ]
     },
@@ -74,24 +67,21 @@
       "fields": [
         {
           "component": "reference",
-          "valueType": "string",
           "name": "image",
           "label": "Image",
-          "multi": false
+          "valueType": "string"
         },
         {
           "component": "richtext",
           "name": "text",
-          "value": "",
           "label": "Text",
           "valueType": "string"
         },
         {
           "component": "aem-content",
-          "valueType": "string",
           "name": "cta",
           "label": "CTA Link",
-          "multi": false
+          "valueType": "string"
         }
       ]
     }
@@ -99,9 +89,7 @@
   "filters": [
     {
       "id": "cards",
-      "components": [
-        "card"
-      ]
+      "components": ["card"]
     }
   ]
 }
