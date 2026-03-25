@@ -94,22 +94,7 @@
                 "template": {
                   "name": "Card Collection",
                   "model": "card-collection",
-                  "filter": "cards"
-                }
-              }
-            }
-          }
-        },
-        {
-          "title": "Card",
-          "id": "card",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block/item",
-                "template": {
-                  "name": "Card",
-                  "model": "card"
+                  "filter": "card-collection-items"
                 }
               }
             }

@@ -21,7 +21,7 @@
     ]
   },
   {
-    "id": "cards",
+    "id": "card-collection-items",
     "components": [
       "card"
     ]
