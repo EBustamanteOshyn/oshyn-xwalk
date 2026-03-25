@@ -16,12 +16,12 @@
       "cards",
       "columns",
       "fragment",
-      "platformcards",
+      "platform-cards",
       "card-collection"
     ]
   },
   {
-    "id": "cards",
+    "id": "card-collection-items",
     "components": [
       "card"
     ]
