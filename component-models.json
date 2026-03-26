@@ -85,7 +85,7 @@
     "fields": [
       {
         "component": "multiselect",
-        "name": "style",
+        "name": "classes",
         "label": "Style",
         "options": [
           {
@@ -158,58 +158,6 @@
             "value": "primary"
           }
         ]
-      }
-    ]
-  },
-  {
-    "id": "card-collection",
-    "fields": [
-      {
-        "component": "text",
-        "name": "headline",
-        "label": "Headline",
-        "valueType": "string"
-      },
-      {
-        "component": "richtext",
-        "name": "description",
-        "label": "Description",
-        "valueType": "string"
-      },
-      {
-        "component": "aem-content",
-        "name": "cta",
-        "label": "CTA Link",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "ctaText",
-        "label": "CTA Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "card",
-    "fields": [
-      {
-        "component": "reference",
-        "name": "image",
-        "label": "Image",
-        "valueType": "string"
-      },
-      {
-        "component": "richtext",
-        "name": "text",
-        "label": "Text",
-        "valueType": "string"
-      },
-      {
-        "component": "aem-content",
-        "name": "cta",
-        "label": "CTA Link",
-        "valueType": "string"
       }
     ]
   },
@@ -291,6 +239,33 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "promo-text",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variant",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Centered",
+            "value": "centered"
+          },
+          {
+            "name": "Promo",
+            "value": "promo"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "body",
+        "label": "Body Content"
       }
     ]
   }
