@@ -1,0 +1,17 @@
+.promo-text.promo p {
+    font-size: 36px;
+    line-height: 45px;
+    font-family: Sora, sans-serif;
+    font-weight: 400;
+    color: white;
+}
+
+.promo-text.promo strong {
+    color: #9765ef;
+    font-size: inherit;
+    font-weight: 700;
+}
+
+.promo-text.centered p {
+    text-align: center;
+}
