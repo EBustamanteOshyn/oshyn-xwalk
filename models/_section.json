@@ -56,7 +56,8 @@
         "columns",
         "fragment",
         "platform-cards",
-        "card-collection"
+        "card-collection",
+        "promo-text"
       ]
     }
   ]

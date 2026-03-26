@@ -241,5 +241,32 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "promo-text",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Variant",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Centered",
+            "value": "centered"
+          },
+          {
+            "name": "Promo",
+            "value": "promo"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "body",
+        "label": "Body Content"
+      }
+    ]
   }
 ]
