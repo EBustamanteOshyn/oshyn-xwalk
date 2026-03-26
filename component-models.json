@@ -162,7 +162,7 @@
     ]
   },
   {
-    "id": "card-collection-block",
+    "id": "card-collection",
     "fields": [
       {
         "component": "text",
