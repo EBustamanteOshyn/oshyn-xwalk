@@ -7,31 +7,70 @@
   position: relative;
   padding: 40px 24px;
   min-height: 300px;
+  overflow: hidden;
+
+  /* New hero style variation */
+  color: var(--background-color);
+  text-align: center;
 }
 
 .hero h1 {
   max-width: 1200px;
   margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+  margin-right: auto;  
+
+  /* New hero style variation */
+  font-size: 42px;
+  line-height: 46.2px;
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  margin-top: 0.8em;
+  margin-bottom: 0.25em;
 }
 
-.hero picture {
+.hero p{
+  /* New hero style variation */
+  line-height: 1.75rem;
+  font-weight: 400;
+  font-family: var(--font-primary);
+  margin-bottom: 30px;
+}
+
+
+
+.hero picture { 
+  /* New hero style variation */
   position: absolute;
-  z-index: -1;
   inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
 
 .hero img {
-  object-fit: cover;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  
+}
+
+.hero > div:last-child {
+  position: relative;
+  z-index: 1;
 }
 
 @media (width >= 900px) {
   .hero {
     padding: 40px 32px;
+  }
+}
+
+@media (width >= 1024px) {
+  .hero h1 {
+    font-size: 52px;
+    line-height: 65px;    
   }
 }

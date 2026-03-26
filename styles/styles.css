@@ -13,6 +13,7 @@
 :root {
   /* colors */
   --background-color: white;
+  --background-primary-color: #0e1633;
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --text-color: #131313;
@@ -22,6 +23,9 @@
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
   --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --font-primary: 'Hind', sans-serif;
+  --font-secondary: 'Sora', sans-serif;
+
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -38,6 +42,23 @@
 
   /* nav height */
   --nav-height: 64px;
+
+  /* Oshyn TW Card */
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -2px rgba(0, 0, 0, .1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+
+  /* Oshyn Hero */
+  --tw-translate-x: -50%;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
 }
 
 /* fallback fonts */
@@ -153,6 +174,10 @@ button {
   font: inherit;
 }
 
+strong {
+  font-weight: 700;
+}
+
 /* links */
 a:any-link {
   color: var(--link-color);
@@ -254,4 +279,8 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+main .section.primary {
+  background-color: var(--background-primary-color);
 }
