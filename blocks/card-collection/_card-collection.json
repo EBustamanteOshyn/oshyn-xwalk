@@ -10,7 +10,7 @@
             "template": {
               "name": "Card Collection",
               "model": "card-collection",
-              "filter": "cards"
+              "filter": "card-collection-items"
             }
           }
         }
@@ -48,5 +48,10 @@
       ]
     }
   ],
-  "filters": []
+  "filters": [
+    {
+      "id": "card-collection-items",
+      "components": ["card"]
+    }
+  ]
 }
