@@ -21,12 +21,6 @@
     ]
   },
   {
-    "id": "card-collection-items",
-    "components": [
-      "card"
-    ]
-  },
-  {
     "id": "cards",
     "components": [
       "card"

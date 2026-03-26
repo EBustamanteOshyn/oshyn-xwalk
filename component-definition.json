@@ -94,7 +94,7 @@
                 "template": {
                   "name": "Card Collection",
                   "model": "card-collection",
-                  "filter": "card-collection-items"
+                  "filter": "cards"
                 }
               }
             }

@@ -10,7 +10,7 @@
             "template": {
               "name": "Card Collection",
               "model": "card-collection",
-              "filter": "card-collection-items"
+              "filter": "cards"
             }
           }
         }
@@ -46,35 +46,7 @@
           "valueType": "string"
         }
       ]
-    },
-    {
-      "id": "card",
-      "fields": [
-        {
-          "component": "reference",
-          "name": "image",
-          "label": "Image",
-          "valueType": "string"
-        },
-        {
-          "component": "richtext",
-          "name": "text",
-          "label": "Text",
-          "valueType": "string"
-        },
-        {
-          "component": "aem-content",
-          "name": "cta",
-          "label": "CTA Link",
-          "valueType": "string"
-        }
-      ]
     }
   ],
-  "filters": [
-    {
-      "id": "card-collection-items",
-      "components": ["card"]
-    }
-  ]
+  "filters": []
 }
