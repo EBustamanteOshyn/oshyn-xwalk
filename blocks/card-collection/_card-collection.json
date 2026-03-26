@@ -46,29 +46,6 @@
           "valueType": "string"
         }
       ]
-    },
-    {
-      "id": "card",
-      "fields": [
-        {
-          "component": "reference",
-          "name": "image",
-          "label": "Image",
-          "valueType": "string"
-        },
-        {
-          "component": "richtext",
-          "name": "text",
-          "label": "Text",
-          "valueType": "string"
-        },
-        {
-          "component": "aem-content",
-          "name": "cta",
-          "label": "CTA Link",
-          "valueType": "string"
-        }
-      ]
     }
   ],
   "filters": [
