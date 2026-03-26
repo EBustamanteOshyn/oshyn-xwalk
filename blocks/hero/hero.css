@@ -16,16 +16,13 @@
 
 .hero h1 {
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;  
 
   /* New hero style variation */
   font-size: 42px;
   line-height: 46.2px;
   font-family: var(--font-secondary);
   font-weight: 700;
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin: 0.8em auto 0.25em auto;
 }
 
 .hero p{

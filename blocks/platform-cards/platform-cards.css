@@ -13,10 +13,10 @@
 }
 
 .tw-card {    
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255 255 255);
     border-radius: .5rem;
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-    color: rgb(0, 0, 0) !important;
+    color: rgb(0 0 0) !important;
     display: flex;
     flex-direction: column;
     height: 420px;
@@ -30,7 +30,7 @@
 
 .tw-card-link {
     align-self: flex-start;
-    color: rgba(0, 0, 0, var(--tw-text-opacity, 1));
+    color: rgb(0 0 0 / var(--tw-text-opacity, 1));
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
@@ -67,7 +67,6 @@
 }
 
 @media (width >= 768px) {
-
     .tw-card-container {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
