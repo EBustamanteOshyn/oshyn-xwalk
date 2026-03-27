@@ -1,51 +1,42 @@
 import EmblaCarousel from 'embla-carousel';
 
 export default async function decorate(block) {
-  // Optional: only activate when author selected the carousel option
-  const isCarousel = block.classList.contains('is-carousel');
-
-  if (!isCarousel) {
+  if (!block.classList.contains('is-carousel')) {
     return;
   }
 
-  // Grab current children as slides
   const originalChildren = [...block.children];
 
-  // Build Embla structure
   const viewport = document.createElement('div');
-  viewport.className = 'embla__viewport';
+  viewport.className = 'embla-viewport';
 
   const container = document.createElement('div');
-  container.className = 'embla__container';
+  container.className = 'embla-container';
 
   originalChildren.forEach((child) => {
     const slide = document.createElement('div');
-    slide.className = 'embla__slide';
-
+    slide.className = 'embla-slide';
     slide.appendChild(child);
     container.appendChild(slide);
   });
 
   viewport.appendChild(container);
 
-  // Optional nav buttons
   const prevButton = document.createElement('button');
-  prevButton.className = 'embla__prev';
+  prevButton.className = 'embla-prev';
   prevButton.type = 'button';
   prevButton.setAttribute('aria-label', 'Previous slide');
   prevButton.textContent = 'Prev';
 
   const nextButton = document.createElement('button');
-  nextButton.className = 'embla__next';
+  nextButton.className = 'embla-next';
   nextButton.type = 'button';
   nextButton.setAttribute('aria-label', 'Next slide');
   nextButton.textContent = 'Next';
 
-  // Clear and rebuild block
   block.textContent = '';
   block.append(viewport, prevButton, nextButton);
 
-  // Init Embla
   const embla = EmblaCarousel(viewport, {
     loop: false,
     align: 'start',

@@ -2,36 +2,36 @@
   position: relative;
 }
 
-.card-collection.is-carousel .embla__viewport {
+.card-collection.is-carousel .embla-viewport {
   overflow: hidden;
   width: 100%;
 }
 
-.card-collection.is-carousel .embla__container {
+.card-collection.is-carousel .embla-container {
   display: flex;
   gap: 1rem;
 }
 
-.card-collection.is-carousel .embla__slide {
+.card-collection.is-carousel .embla-slide {
   flex: 0 0 80%;
   min-width: 0;
 }
 
 /* Tablet */
-@media (min-width: 768px) {
-  .card-collection.is-carousel .embla__slide {
+@media (width >= 768px) {
+  .card-collection.is-carousel .embla-slide {
     flex: 0 0 calc(50% - 0.5rem);
   }
 }
 
 /* Desktop */
-@media (min-width: 1200px) {
-  .card-collection.is-carousel .embla__slide {
+@media (width >= 1200px) {
+  .card-collection.is-carousel .embla-slide {
     flex: 0 0 calc(33.333% - 0.667rem);
   }
 }
 
-.card-collection.is-carousel .embla__prev,
-.card-collection.is-carousel .embla__next {
+.card-collection.is-carousel .embla-prev,
+.card-collection.is-carousel .embla-next {
   margin-top: 1rem;
 }
