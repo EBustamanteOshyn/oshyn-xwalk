@@ -1,37 +1,44 @@
-.card-collection.is-carousel {
+.card-collection {
   position: relative;
 }
 
-.card-collection.is-carousel .embla-viewport {
+.card-collection .embla-viewport {
   overflow: hidden;
   width: 100%;
 }
 
-.card-collection.is-carousel .embla-container {
+.card-collection .embla-container {
   display: flex;
   gap: 1rem;
 }
 
-.card-collection.is-carousel .embla-slide {
+.card-collection .embla-slide {
   flex: 0 0 80%;
   min-width: 0;
 }
 
+/* Make card content fill the slide nicely */
+.card-collection .embla-slide > div {
+  box-sizing: border-box;
+  height: 100%;
+}
+
 /* Tablet */
 @media (width >= 768px) {
-  .card-collection.is-carousel .embla-slide {
+  .card-collection .embla-slide {
     flex: 0 0 calc(50% - 0.5rem);
   }
 }
 
 /* Desktop */
 @media (width >= 1200px) {
-  .card-collection.is-carousel .embla-slide {
+  .card-collection .embla-slide {
     flex: 0 0 calc(33.333% - 0.667rem);
   }
 }
 
-.card-collection.is-carousel .embla-prev,
-.card-collection.is-carousel .embla-next {
+.card-collection .embla-prev,
+.card-collection .embla-next {
   margin-top: 1rem;
+  margin-right: 0.5rem;
 }

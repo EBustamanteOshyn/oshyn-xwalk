@@ -1,11 +1,11 @@
 import EmblaCarousel from 'embla-carousel';
 
-export default async function decorate(block) {
-  if (!block.classList.contains('is-carousel')) {
+export default function decorate(block) {
+  const cardItems = [...block.children];
+
+  if (!cardItems.length) {
     return;
   }
-
-  const originalChildren = [...block.children];
 
   const viewport = document.createElement('div');
   viewport.className = 'embla-viewport';
@@ -13,10 +13,10 @@ export default async function decorate(block) {
   const container = document.createElement('div');
   container.className = 'embla-container';
 
-  originalChildren.forEach((child) => {
+  cardItems.forEach((item) => {
     const slide = document.createElement('div');
     slide.className = 'embla-slide';
-    slide.appendChild(child);
+    slide.appendChild(item);
     container.appendChild(slide);
   });
 
@@ -34,8 +34,7 @@ export default async function decorate(block) {
   nextButton.setAttribute('aria-label', 'Next slide');
   nextButton.textContent = 'Next';
 
-  block.textContent = '';
-  block.append(viewport, prevButton, nextButton);
+  block.replaceChildren(viewport, prevButton, nextButton);
 
   const embla = EmblaCarousel(viewport, {
     loop: false,
@@ -43,17 +42,15 @@ export default async function decorate(block) {
     slidesToScroll: 1,
   });
 
-  prevButton.addEventListener('click', () => embla.scrollPrev());
-  nextButton.addEventListener('click', () => embla.scrollNext());
-
   const updateButtons = () => {
     prevButton.disabled = !embla.canScrollPrev();
     nextButton.disabled = !embla.canScrollNext();
   };
 
-  embla.on('init', updateButtons);
-  embla.on('reInit', updateButtons);
-  embla.on('select', updateButtons);
+  prevButton.addEventListener('click', () => embla.scrollPrev());
+  nextButton.addEventListener('click', () => embla.scrollNext());
 
   updateButtons();
+  embla.on('select', updateButtons);
+  embla.on('reInit', updateButtons);
 }
