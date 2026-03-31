@@ -1,4 +1,4 @@
-import EmblaCarousel from 'embla-carousel';
+import EmblaCarousel from 'https://cdn.jsdelivr.net/npm/embla-carousel/embla-carousel.esm.js';
 
 export default function decorate(block) {
   const cardItems = [...block.children];
