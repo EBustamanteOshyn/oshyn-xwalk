@@ -1,5 +1,37 @@
 import EmblaCarousel from '../../scripts/vendor/embla-carousel.esm.js';
 
+function transformCardImageToBackground(card) {
+  const imageWrapper = card.querySelector(':scope > div:first-child');
+  const img = imageWrapper?.querySelector('img');
+
+  if (!img) {
+    return;
+  }
+
+  const src = img.getAttribute('src');
+  if (!src) {
+    return;
+  }
+
+  const bg = document.createElement('div');
+  bg.className = 'card-bg';
+  bg.style.backgroundImage = `url("${src}")`;
+
+  const content = document.createElement('div');
+  content.className = 'card-content';
+
+  const children = [...card.children];
+
+  children.forEach((child, index) => {
+    if (index !== 0) {
+      content.appendChild(child);
+    }
+  });
+
+  bg.appendChild(content);
+  card.replaceChildren(bg);
+}
+
 export default function decorate(block) {
   const cardItems = [...block.children];
 
@@ -13,10 +45,12 @@ export default function decorate(block) {
   const container = document.createElement('div');
   container.className = 'embla-container';
 
-  cardItems.forEach((item) => {
+  cardItems.forEach((card) => {
+    transformCardImageToBackground(card);
+
     const slide = document.createElement('div');
     slide.className = 'embla-slide';
-    slide.appendChild(item);
+    slide.appendChild(card);
     container.appendChild(slide);
   });
 
@@ -37,8 +71,8 @@ export default function decorate(block) {
   block.replaceChildren(viewport, prevButton, nextButton);
 
   const embla = EmblaCarousel(viewport, {
-    loop: false,
     align: 'start',
+    loop: false,
     slidesToScroll: 1,
   });
 
@@ -51,6 +85,10 @@ export default function decorate(block) {
   nextButton.addEventListener('click', () => embla.scrollNext());
 
   updateButtons();
-  embla.on('select', updateButtons);
+  embla.on('init', updateButtons);
   embla.on('reInit', updateButtons);
+  embla.on('select', updateButtons);
+
+  console.log('Embla initialized');
+  console.log('Slides:', container.children.length);
 }

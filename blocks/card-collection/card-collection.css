@@ -1,62 +1,213 @@
 .card-collection {
-    position: relative;
+  position: relative;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 3.5rem 4.5rem;
 }
 
 .card-collection .embla-viewport {
-    overflow: hidden;
-    width: 100%;
+  overflow: hidden;
+  width: 100%;
 }
 
 .card-collection .embla-container {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 2rem;
 }
 
 .card-collection .embla-slide {
-    flex: 0 0 80%;
-    min-width: 0;
+  flex: 0 0 85%;
+  min-width: 0;
 }
 
-/* Make card content fill the slide nicely */
 .card-collection .embla-slide > div {
-    box-sizing: border-box;
-    height: 100%;
+  box-sizing: border-box;
+  height: 100%;
 }
 
 /* Tablet */
 @media (width >= 768px) {
-    .card-collection .embla-slide {
-        flex: 0 0 calc(50% - 0.5rem);
-    }
+  .card-collection .embla-slide {
+    flex: 0 0 calc(50% - 1rem);
+  }
 }
 
 /* Desktop */
 @media (width >= 1200px) {
-    .card-collection .embla-slide {
-        flex: 0 0 calc(33.333% - 0.667rem);
-    }
+  .card-collection .embla-slide {
+    flex: 0 0 calc((100% - 4rem) / 3);
+  }
 }
 
+/* Card root */
+.card-collection [data-aue-component='card'] {
+  height: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Background card */
+.card-bg {
+  position: relative;
+  min-height: 468px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Dark overlay */
+.card-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(16, 24, 40, 0.55) 0%,
+      rgba(16, 24, 40, 0.45) 30%,
+      rgba(16, 24, 40, 0.7) 100%
+    );
+}
+
+/* Foreground content */
+.card-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* First text block: small label */
+.card-content > div:first-child p,
+.card-content > div:first-child {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+/* Main title block */
+.card-content > div:nth-child(2) p,
+.card-content > div:nth-child(2) {
+  margin: 0;
+  font-size: 2.75rem;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+/* Hide empty third row if needed */
+.card-content > div:empty {
+  display: none;
+}
+
+/* Button/link area */
+.card-content .button-container {
+  margin: 0;
+}
+
+.card-content .button-container .button,
+.card-content .button-container a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Arrows */
 .card-collection .embla-prev,
 .card-collection .embla-next {
-    margin-top: 1rem;
-    margin-right: 0.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid #8d8d8d;
+  border-radius: 999px;
+  background: #f5f5f5;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+  font-size: 0;
 }
 
-.card-collection-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
+.card-collection .embla-prev {
+  left: 0;
 }
 
-.card-collection [data-aue-component="card"] {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    box-sizing: border-box;
+.card-collection .embla-next {
+  right: 0;
 }
 
-img {
-    max-width: 100%;
-    border-radius: 6px;
+.card-collection .embla-prev::before {
+  content: '←';
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.card-collection .embla-next::before {
+  content: '→';
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.card-collection .embla-prev:disabled,
+.card-collection .embla-next:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* Optional dots wrapper */
+.card-collection .embla-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid #a8a8a8;
+  border-radius: 999px;
+  background: #efefef;
+}
+
+/* Optional single dot */
+.card-collection .embla-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border: 0;
+  border-radius: 999px;
+  background: #b7b7b7;
+  padding: 0;
+  cursor: pointer;
+}
+
+.card-collection .embla-dot.is-selected {
+  background: #7c7c7c;
 }
