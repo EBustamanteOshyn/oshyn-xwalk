@@ -88,7 +88,4 @@ export default function decorate(block) {
   embla.on('init', updateButtons);
   embla.on('reInit', updateButtons);
   embla.on('select', updateButtons);
-
-  console.log('Embla initialized');
-  console.log('Slides:', container.children.length);
 }
