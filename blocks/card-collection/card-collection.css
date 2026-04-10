@@ -59,6 +59,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: transform 0.4s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .card-bg::before {
@@ -73,17 +74,22 @@
       rgb(16 24 40 / 75%) 100%
     );
 }
+.card-bg:hover {
+  transform: scale(1.02);
+  background-size: 105%;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 20%);
+}
 
 .card-link {
-  position: relative;
+  position: absolute;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: start;
   max-width: 264px;
   padding-left: 1.5rem;
   color: #fff;
   text-decoration: none;
+  inset: 0;
 }
 
 .card-header {
@@ -130,20 +136,11 @@
   font-weight: 700;
 }
 
-.card-link:hover,
-.card-link:focus {
-  text-decoration: none;
-}
-
 .card-link:focus-visible {
   outline: 2px solid #fff;
   outline-offset: -4px;
 }
 
-.card-collection .button-container,
-.card-collection .button {
-  display: none;
-}
 
 .card-collection .embla-prev,
 .card-collection .embla-next {
