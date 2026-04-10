@@ -9,10 +9,9 @@ function transformCard(card) {
   const imageWrapper = getClosestPropWrapper(card, 'image');
   const headerWrapper = getClosestPropWrapper(card, 'header');
   const textWrapper = getClosestPropWrapper(card, 'text');
-  const ctaWrapper = getClosestPropWrapper(card, 'cta');
 
   const img = imageWrapper?.querySelector('img');
-  const ctaLink = ctaWrapper?.querySelector('a');
+  const ctaLink = card.querySelector('.button-container a');
 
   const imageSrc = img?.getAttribute('src');
   const href = ctaLink?.getAttribute('href');
