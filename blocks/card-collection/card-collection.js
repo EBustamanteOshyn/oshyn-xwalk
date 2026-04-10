@@ -1,34 +1,58 @@
 import EmblaCarousel from '../../scripts/vendor/embla-carousel.esm.js';
 
-function transformCardImageToBackground(card) {
-  const imageWrapper = card.querySelector(':scope > div:first-child');
+function getClosestPropWrapper(card, propName) {
+  const el = card.querySelector(`[data-aue-prop="${propName}"]`);
+  return el ? el.closest('div') : null;
+}
+
+function transformCard(card) {
+  const imageWrapper = getClosestPropWrapper(card, 'image');
+  const headerWrapper = getClosestPropWrapper(card, 'header');
+  const textWrapper = getClosestPropWrapper(card, 'text');
+  const ctaWrapper = getClosestPropWrapper(card, 'cta');
+
   const img = imageWrapper?.querySelector('img');
+  const ctaLink = ctaWrapper?.querySelector('a');
 
-  if (!img) {
-    return;
-  }
-
-  const src = img.getAttribute('src');
-  if (!src) {
-    return;
-  }
+  const imageSrc = img?.getAttribute('src');
+  const href = ctaLink?.getAttribute('href');
+  const target = ctaLink?.getAttribute('target');
 
   const bg = document.createElement('div');
   bg.className = 'card-bg';
-  bg.style.backgroundImage = `url("${src}")`;
 
-  const content = document.createElement('div');
-  content.className = 'card-content';
+  if (imageSrc) {
+    bg.style.backgroundImage = `url("${imageSrc}")`;
+  }
 
-  const children = [...card.children];
+  const cardContent = href ? document.createElement('a') : document.createElement('div');
+  cardContent.className = 'card-link';
 
-  children.forEach((child, index) => {
-    if (index !== 0) {
-      content.appendChild(child);
+  if (href) {
+    cardContent.href = href;
+    cardContent.setAttribute('aria-label', ctaLink?.textContent?.trim() || 'Open card');
+
+    if (target) {
+      cardContent.target = target;
     }
-  });
+  }
 
-  bg.appendChild(content);
+  const header = document.createElement('h3');
+  header.className = 'card-header';
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+
+  if (headerWrapper) {
+    header.appendChild(headerWrapper);
+  }
+
+  if (textWrapper) {
+    body.appendChild(textWrapper);
+  }
+
+  cardContent.append(header, body);
+  bg.appendChild(cardContent);
   card.replaceChildren(bg);
 }
 
@@ -46,7 +70,7 @@ export default function decorate(block) {
   container.className = 'embla-container';
 
   cardItems.forEach((card) => {
-    transformCardImageToBackground(card);
+    transformCard(card);
 
     const slide = document.createElement('div');
     slide.className = 'embla-slide';
@@ -60,7 +84,7 @@ export default function decorate(block) {
   prevButton.className = 'embla-prev';
   prevButton.type = 'button';
   prevButton.setAttribute('aria-label', 'Previous slide');
-  prevButton.textContent = 'Prev';
+  prevButton.textContent = 'Previous';
 
   const nextButton = document.createElement('button');
   nextButton.className = 'embla-next';
@@ -85,7 +109,6 @@ export default function decorate(block) {
   nextButton.addEventListener('click', () => embla.scrollNext());
 
   updateButtons();
-  embla.on('init', updateButtons);
-  embla.on('reInit', updateButtons);
   embla.on('select', updateButtons);
+  embla.on('reInit', updateButtons);
 }

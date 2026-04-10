@@ -1,3 +1,8 @@
+.card-body > div,
+.card-body > div > * + * {
+  margin-top: 0.75rem;
+}
+
 .card-collection {
   position: relative;
   max-width: 1120px;
@@ -25,21 +30,18 @@
   height: 100%;
 }
 
-/* Tablet */
 @media (width >= 768px) {
   .card-collection .embla-slide {
     flex: 0 0 calc(50% - 1rem);
   }
 }
 
-/* Desktop */
 @media (width >= 1200px) {
   .card-collection .embla-slide {
     flex: 0 0 calc((100% - 4rem) / 3);
   }
 }
 
-/* Card root */
 .card-collection [data-aue-component='card'] {
   height: 100%;
   border-radius: 0.5rem;
@@ -47,16 +49,11 @@
   box-sizing: border-box;
 }
 
-/* Background card */
 .card-bg {
   position: relative;
   min-height: 468px;
   height: 100%;
   width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  flex-direction: column;
   overflow: hidden;
   border-radius: 0.5rem;
   background-size: cover;
@@ -64,77 +61,90 @@
   background-repeat: no-repeat;
 }
 
-/* Dark overlay */
 .card-bg::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-  linear-gradient(
-    to bottom,
-    rgb(16 24 40 / 55%) 0%,
-    rgb(16 24 40 / 45%) 30%,
-    rgb(16 24 40 / 70%) 100%
-  );
+    linear-gradient(
+      to bottom,
+      rgb(16 24 40 / 45%) 0%,
+      rgb(16 24 40 / 35%) 25%,
+      rgb(16 24 40 / 75%) 100%
+    );
 }
 
-/* Foreground content */
-.card-content {
+.card-link {
   position: relative;
   z-index: 1;
-  width: 100%;
-  padding: 2rem 1.5rem;
-  color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  gap: 1rem;
+  justify-content: start;
+  max-width: 264px;
+  padding-left: 1.5rem;
+  color: #fff;
+  text-decoration: none;
 }
 
-/* First text block: small label */
-.card-content > div:first-child p,
-.card-content > div:first-child {
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2.5rem;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.card-body {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Header */
+.card-header p,
+.card-header h1,
+.card-header h2,
+.card-header h3,
+.card-header h4,
+.card-header h5,
+.card-header h6 {
   margin: 0;
-  font-size: 1.75rem;
+  color: #fff;
+  font-size: 1rem;
   line-height: 1.2;
   font-weight: 600;
 }
 
-/* Main title block */
-.card-content > div:nth-child(2) p,
-.card-content > div:nth-child(2) {
+/* Description / rich text */
+.card-body p,
+.card-body h1,
+.card-body h2,
+.card-body h3,
+.card-body h4,
+.card-body h5,
+.card-body h6,
+.card-body li {
   margin: 0;
-  font-size: 2.75rem;
-  line-height: 1.15;
+  color: #fff;
+  font-size: 24px;
+  line-height: 30.24px;
   font-weight: 700;
 }
 
-/* Hide empty third row if needed */
-.card-content > div:empty {
+.card-link:hover,
+.card-link:focus {
+  text-decoration: none;
+}
+
+.card-link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+}
+
+.card-collection .button-container,
+.card-collection .button {
   display: none;
 }
 
-/* Button/link area */
-.card-content .button-container {
-  margin: 0;
-}
-
-.card-content .button-container .button,
-.card-content .button-container a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: 999px;
-  background: transparent;
-  color: #fff;
-  border: 1px solid rgb(255 255 255 / 60%);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-/* Arrows */
 .card-collection .embla-prev,
 .card-collection .embla-next {
   position: absolute;
@@ -142,7 +152,7 @@
   transform: translateY(-50%);
   width: 3rem;
   height: 3rem;
-  border: 1px solid rgb(141 141 141);
+  border: 1px solid #8d8d8d;
   border-radius: 999px;
   background: #f5f5f5;
   color: #666;
@@ -180,34 +190,4 @@
 .card-collection .embla-next:disabled {
   opacity: 0.45;
   cursor: default;
-}
-
-/* Optional dots wrapper */
-.card-collection .embla-dots {
-  position: absolute;
-  left: 50%;
-  bottom: 1rem;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 0.9rem;
-  border: 1px solid #a8a8a8;
-  border-radius: 999px;
-  background: #efefef;
-}
-
-/* Optional single dot */
-.card-collection .embla-dot {
-  width: 0.45rem;
-  height: 0.45rem;
-  border: 0;
-  border-radius: 999px;
-  background: #b7b7b7;
-  padding: 0;
-  cursor: pointer;
-}
-
-.card-collection .embla-dot.is-selected {
-  background: #7c7c7c;
 }
